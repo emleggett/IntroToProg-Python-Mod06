@@ -38,9 +38,33 @@ else:
 Next, the IO - or Input/Output - class was created to display program outputs to (in this case, the menu and to do list itself) as well as collect necessary inputs from (menu selection, tasks to be added/removed) the user. Compared to the processing functions, these were much simpler in syntax and purpose: of the five IO functions, only one passes through an argument and two of five do not indicate a specific return (i.e., output). As these functions are primarily tasked with collecting and displaying data, they also did not necessitate the use of conditionals or loops; instead, they largely employed input and print to engage with the user and collect inputs.
 
 ## Call Functions
-TEXT
+The final step in creating this week’s script file was calling the Processor and IO functions created earlier in the script when needed - which is to say, when executing the task at hand. To do so, a more robust conditional loop similar to that in last week’s assignment was deployed; however, as much of the “work” the program is doing had been defined earlier in the script, this week’s loop was not populated with further conditionals, but rather functions and arguments being called. As evidenced below, many of these conditional statements consisted solely of functions:
+
+```
+if choice_str.strip() == "1":  # Choice 1: Add new task to list.
+    (task, priority) = IO.input_new_task_and_priority()
+    Processor.add_data_to_list(task, priority, table_lst)
+    continue  # Returns user to main menu.
+elif choice_str == "2":  # Choice 2: Remove an existing task from list.
+    remove_task = IO.input_task_to_remove()
+    Processor.remove_data_from_list(remove_task, table_lst)
+    continue  # Returns user to main menu.
+```
+
+In the case of saving the user’s to do list data back to the .txt file, however, I decided to add a warning message alerting the user that the file was in “write” mode, which would overwrite their current list data:
+
+```
+elif choice_str == "3":  # Choice 3: Save current To Do list data to file.
+    save_choice = input("Save current list to file? This can't be undone! (y/n): ")  # Warns user that list data will be overwritten.
+    if save_choice.lower() == "y":  # Saves data to files if user inputs 'y'.
+        Processor.write_data_to_file(file_name_str, table_lst)
+        input("Data saved to file. Press Enter to return to program.")
+    else:  # Returns user to main menu if 'y' is not inputted.
+        input("Data not saved to file. Press Enter to return to program.")
+    continue  # Returns user to main menu.
+```
 
 ## Validate Code
-TEXT
+As with last week, I validated my script file two-fold: once by adding a task and saving it back to ToDoFile.txt in the PyCharm IDE (in the process confirming the file was created in the correct location) and again in Terminal by reading, removing, and re-saving the file, essentially overwriting any addition I had just made. This process is documented in detail in the attached PDF file.
 
 ## Lessons Learned
