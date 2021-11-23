@@ -41,11 +41,11 @@ Next, the IO - or Input/Output - class was created to display program outputs to
 The final step in creating this week’s script file was calling the Processor and IO functions created earlier in the script when needed - which is to say, when executing the task at hand. To do so, a more robust conditional loop similar to that in last week’s assignment was deployed; however, as much of the “work” the program is doing had been defined earlier in the script, this week’s loop was not populated with further conditionals, but rather functions and arguments being called. As evidenced below, many of these conditional statements consisted solely of functions:
 
 ```
-if choice_str.strip() == "1":  # Choice 1: Add new task to list.
+if choice_str.strip() == "1":
     (task, priority) = IO.input_new_task_and_priority()
     Processor.add_data_to_list(task, priority, table_lst)
     continue  # Returns user to main menu.
-elif choice_str == "2":  # Choice 2: Remove an existing task from list.
+elif choice_str == "2":
     remove_task = IO.input_task_to_remove()
     Processor.remove_data_from_list(remove_task, table_lst)
     continue  # Returns user to main menu.
@@ -55,13 +55,13 @@ In the case of saving the user’s to do list data back to the .txt file, howeve
 
 ```
 elif choice_str == "3":  # Choice 3: Save current To Do list data to file.
-    save_choice = input("Save current list to file? This can't be undone! (y/n): ")  # Warns user that list data will be overwritten.
-    if save_choice.lower() == "y":  # Saves data to files if user inputs 'y'.
+    save_choice = input("Save current list to file? This can't be undone! (y/n): ")
+    if save_choice.lower() == "y":
         Processor.write_data_to_file(file_name_str, table_lst)
         input("Data saved to file. Press Enter to return to program.")
     else:  # Returns user to main menu if 'y' is not inputted.
         input("Data not saved to file. Press Enter to return to program.")
-    continue  # Returns user to main menu.
+    continue
 ```
 
 ## Validate Code
