@@ -173,7 +173,7 @@ while (True):
         continue  # Returns user to main menu.
     elif choice_str == "2":  # Choice 2: Remove an existing task from list.
         remove_task = IO.input_task_to_remove()
-        Processor.remove_data_from_list(task, table_lst)
+        Processor.remove_data_from_list(remove_task, table_lst)
         continue  # Returns user to main menu.
     elif choice_str == "3":  # Choice 3: Save current To Do list data to file.
         save_choice = input("Save current list to file? This can't be undone! (y/n): ")  # Warns user that list data will be overwritten.
