@@ -1,24 +1,22 @@
-# TITLE
-IT FDN 110-A
-Module 05
-Assignment 05
-November 23, 2021
+# DEFINING AND CALLING FUNCTIONS IN PYTHON
+
+IT FDN 110-A | Module 06 | Assignment 06 | November 23, 2021
 
 ## Objective
 Describe the steps taken to create the Python script attached to this assignment.
+
+## Introduction
  
-## HEADER 1
+## Process Data
 TEXT
 
-## HEADER 2
+## Define Inputs & Collect Outputs
 TEXT
 
-## HEADER 3
+## Call Functions
 TEXT
 
-## HEADER 4
+## Validate Code
 TEXT
 
-## Resources
-(EXAMPLE:)
-Microsoft, 2016, User-Defined Functions, accessed 22 August 2021,<https://docs.microsoft.com/en-us/sql/relational-databases/user-defined-functions/user-defined-functions?view=sql-server-ver15>.
+## Lessons Learned
