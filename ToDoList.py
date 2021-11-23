@@ -6,6 +6,7 @@
 #              Add the each dictionary "row" to a python list "table"
 # RRoot,1.1.2020,Created starter script
 # ELeggett,11.22.2021,Added and debugged code
+# ELeggett,11.23.2021,Cleaned up code, added additional features
 # ---------------------------------------------------------------------------- #
 
 # Define Data ---------------------------------------------------------------- #
@@ -136,7 +137,7 @@ class IO:
         print("\n******* Here is your current To Do list: *******")
         for row in list_of_rows:
             print(row["Task"] + " (" + row["Priority"] + ")")
-        print("************************************************\n")
+        print("************************************************")
 
     @staticmethod
     def input_new_task_and_priority():
@@ -166,6 +167,7 @@ while (True):
     IO.output_current_tasks_in_list(table_lst)  # Step 2: Display current To Do list data.
     IO.output_menu_tasks()  # Step 3: Display a menu of choices to the user.
     choice_str = IO.input_menu_choice()  # Step 4: Request menu choice from user.
+    save_flg = False
     # Step 5: Process user's menu choice.
     if choice_str.strip() == "1":  # Choice 1: Add new task to list.
         (task, priority) = IO.input_new_task_and_priority()
@@ -176,15 +178,32 @@ while (True):
         Processor.remove_data_from_list(remove_task, table_lst)
         continue  # Returns user to main menu.
     elif choice_str == "3":  # Choice 3: Save current To Do list data to file.
-        save_choice = input("Save current list to file? This can't be undone! (y/n): ")  # Warns user that list data will be overwritten.
-        if save_choice.lower() == "y":  # Saves data to files if user inputs 'y'.
+        save_choice = input("Save current list to file? This can't be undone! (yes/no): ")  # Warns user that list data will be overwritten.
+        if save_choice.lower() == "yes":  # Saves data to files if user inputs 'yes'.
             Processor.write_data_to_file(file_name_str, table_lst)
+            save_flag = True
             input("Data saved to file. Press Enter to return to program.")
-        else:  # Returns user to main menu if 'y' is not inputted.
+        elif save_choice.lower() == "no":  # Returns user to file if input is 'no'.
             input("Data not saved to file. Press Enter to return to program.")
+            save_flg = False
+        else:
+            input("Invalid input. Press Enter to return to program.")
+            save_flg = False
         continue  # Returns user to main menu.
     elif choice_str == "4":  # Choice 4: Exit program.
-        print("Exiting program. Goodbye!")
-        break  # Removes user from program.
+        if save_flg == True:
+            print("Exiting program. Goodbye!")
+            break  # Removes user from program.
+        else:
+            exit_choice = input("Your current data has not been saved. Are you sure? (yes or no): ")
+            if exit_choice == "yes":
+                input("Data not saved to file. Press Enter to exit to program. Goodbye!")
+                break  # Removes user from program.
+            elif exit_choice == "no":
+                Processor.write_data_to_file(file_name_str, table_lst)
+                input("Data saved to file. Press Enter to exit to program. Goodbye!")
+                break  # Removes user from program.
+            else:
+                input("Invalid input. Press Enter to return to program.")
     else:
         input("Please choose an option between 1 and 4!")  # Returns user to main menu if invalid menu option is chosen.
