@@ -35,7 +35,7 @@ else:
 ```
 
 ## Define Inputs & Collect Outputs
-From there, the IO, or Input/Output class was created to display program outputs to (in this case, the menu and to do list itself) as well as collect necessary inputs (menu choice, tasks to be removed/added) from the user. Compared to the processing functions, these are much simpler in syntax and purpose: of the five IO functions, only one passes through an argument and two of five do not indicate a specific return (i.e., output). As these functions are primarily tasked with collecting and displaying data, they also did not necessitate the use of conditionals or loops; instead, they largely employed input and print to engage with the user and collect inputs.
+Next, the IO - or Input/Output - class was created to display program outputs to (in this case, the menu and to do list itself) as well as collect necessary inputs from (menu selection, tasks to be added/removed) the user. Compared to the processing functions, these were much simpler in syntax and purpose: of the five IO functions, only one passes through an argument and two of five do not indicate a specific return (i.e., output). As these functions are primarily tasked with collecting and displaying data, they also did not necessitate the use of conditionals or loops; instead, they largely employed input and print to engage with the user and collect inputs.
 
 ## Call Functions
 TEXT
