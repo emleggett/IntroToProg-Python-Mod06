@@ -6,7 +6,6 @@
 #              Add the each dictionary "row" to a python list "table"
 # RRoot,1.1.2020,Created starter script
 # ELeggett,11.22.2021,Added and debugged code
-# ELeggett,11.23.2021,Cleaned up code, added additional features
 # ---------------------------------------------------------------------------- #
 
 # Define Data ---------------------------------------------------------------- #
@@ -15,6 +14,7 @@ file_name_str = "ToDoFile.txt"  # The name of the data file
 file_create = open(file_name_str, "a")  # Creates/opens companion .txt file
 table_lst = []  # A list that acts as a 'table' of rows
 choice_str = ""  # Captures the user option selection
+save_flg = False  # Used to confirm whether file has been saved
 
 # Process Data --------------------------------------------------------------- #
 class Processor:
@@ -167,7 +167,6 @@ while (True):
     IO.output_current_tasks_in_list(table_lst)  # Step 2: Display current To Do list data.
     IO.output_menu_tasks()  # Step 3: Display a menu of choices to the user.
     choice_str = IO.input_menu_choice()  # Step 4: Request menu choice from user.
-    save_flg = False
     # Step 5: Process user's menu choice.
     if choice_str.strip() == "1":  # Choice 1: Add new task to list.
         (task, priority) = IO.input_new_task_and_priority()
@@ -181,7 +180,7 @@ while (True):
         save_choice = input("Save current list to file? This can't be undone! (yes/no): ")  # Warns user that list data will be overwritten.
         if save_choice.lower() == "yes":  # Saves data to files if user inputs 'yes'.
             Processor.write_data_to_file(file_name_str, table_lst)
-            save_flag = True
+            save_flg = True
             input("Data saved to file. Press Enter to return to program.")
         elif save_choice.lower() == "no":  # Returns user to file if input is 'no'.
             input("Data not saved to file. Press Enter to return to program.")
