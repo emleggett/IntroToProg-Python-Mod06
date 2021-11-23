@@ -186,23 +186,22 @@ while (True):
             input("Data not saved to file. Press Enter to return to program.")
             save_flg = False
         else:
-            input("Invalid input. Press Enter to return to program.")
+            input("Invalid input. Press Enter to return to program.")  # Informs uer of invalid input and returns to main menu.
             save_flg = False
         continue  # Returns user to main menu.
     elif choice_str == "4":  # Choice 4: Exit program.
-        if save_flg == True:
+        if save_flg == True:  # Exits program if file has been saved.
             print("Exiting program. Goodbye!")
             break  # Removes user from program.
         else:
-            exit_choice = input("Your current data has not been saved. Are you sure? (yes or no): ")
-            if exit_choice == "yes":
+            exit_choice = input("Your current data has not been saved. Are you sure? (yes or no): ")  # Warns user if save_flg is False and file has not been saved.
+            if exit_choice == "yes":  # Exits program if user input is 'yes'.
                 input("Data not saved to file. Press Enter to exit to program. Goodbye!")
                 break  # Removes user from program.
-            elif exit_choice == "no":
-                Processor.write_data_to_file(file_name_str, table_lst)
-                input("Data saved to file. Press Enter to exit to program. Goodbye!")
-                break  # Removes user from program.
+            elif exit_choice == "no": # Returns user to main menu if answer is 'no'.
+                continue  # Returns user to main menu.
             else:
-                input("Invalid input. Press Enter to return to program.")
+                input("Invalid input. Press Enter to return to program.")  # Informs uer of invalid input and returns to main menu.
+            continue  # Returns user to main menu.
     else:
         input("Please choose an option between 1 and 4!")  # Returns user to main menu if invalid menu option is chosen.
