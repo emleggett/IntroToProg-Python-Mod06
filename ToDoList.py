@@ -14,7 +14,7 @@ file_name_str = "ToDoFile.txt"  # The name of the data file
 file_create = open(file_name_str, "a")  # Creates/opens companion .txt file
 table_lst = []  # A list that acts as a 'table' of rows
 choice_str = ""  # Captures the user option selection
-save_flg = False  # Used to confirm whether file has been saved
+save_flg = False  # Boolean operator used to confirm file has been saved
 
 # Process Data --------------------------------------------------------------- #
 class Processor:
