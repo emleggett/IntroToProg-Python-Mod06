@@ -12,7 +12,6 @@
 # Declare variables and constants
 file_name_str = "ToDoFile.txt"  # The name of the data file
 file_create = open(file_name_str, "a")  # Creates/opens companion .txt file
-row_dic = {}  # A row of data separated into elements of a dictionary {Task,Priority}
 table_lst = []  # A list that acts as a 'table' of rows
 choice_str = ""  # Captures the user option selection
 
@@ -71,10 +70,18 @@ class Processor:
         :param list_of_rows: (list) being actioned by function:
         :return: revised (list) of dictionary rows
         """
+        bln_flag = False
+        int_row = 0
         for row in list_of_rows:
             task, priority = dict(row).values()
-            if task.lower() == remove_task.lower():  # Locates matching task in list
+            if remove_task.lower() == task.lower():  # Loop confirming indicated task exists in To Do list.
                 list_of_rows.remove(row)
+                bln_flag = True
+            int_row += 1
+        if bln_flag == True:
+            print("Task successfully removed from list!")
+        else:
+            input("Task not found. Press Enter to return to main menu.")
         return list_of_rows
 
     @staticmethod
@@ -166,18 +173,7 @@ while (True):
         continue  # Returns user to main menu.
     elif choice_str == "2":  # Choice 2: Remove an existing task from list.
         remove_task = IO.input_task_to_remove()
-        bln_flag = False
-        int_row = 0
-        for row in table_lst:
-            task, priority = dict(row).values()
-            if remove_task.lower() == task.lower():  # Loop confirming indicated task exists in To Do list.
-                Processor.remove_data_from_list(task, table_lst)
-                bln_flag = True
-            int_row += 1
-        if bln_flag == True:
-            print("Task successfully removed from list!")
-        else:
-            input("Task not found. Press Enter to return to main menu.")
+        Processor.remove_data_from_list(task, table_lst)
         continue  # Returns user to main menu.
     elif choice_str == "3":  # Choice 3: Save current To Do list data to file.
         save_choice = input("Save current list to file? This can't be undone! (y/n): ")  # Warns user that list data will be overwritten.
